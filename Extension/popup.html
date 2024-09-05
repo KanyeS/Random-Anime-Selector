@@ -1,16 +1,111 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Random Anime Selector</title>
-    <style>
-      /* Add your styling here */
-    </style>
-  </head>
-  <body>
-    <h1 id="anime-title">Loading...</h1>
-    <img id="anime-image" src="" alt="Anime Image" width="200">
-    <button id="refresh">Get Another Anime</button>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Anime Selector</title>
 
-    <script src="popup.js"></script>
-  </body>
+  <!-- Include local Bootstrap CSS -->
+  <link href="bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Custom styling */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #anime-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .anime-container {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .anime-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      margin-top: 50px;
+    }
+
+    .anime-synopsis {
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+
+    .anime-genres {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .anime-genres li {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    #refresh {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    body {
+      min-width: 700px;
+      min-height: 1000px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Random Anime Page -->
+  <div id="random-anime-container" class="anime-container text-center">
+    <button id="refresh" class="btn btn-secondary">Get Another Anime</button>
+
+    <h1 id="anime-title" class="anime-title">Loading...</h1>
+    <img id="anime-image" src="" alt="Anime Image" class="img-fluid rounded">
+    <p id="anime-synopsis" class="anime-synopsis">Loading synopsis...</p>
+    <a id="anime-url" href="" target="_blank" class="btn btn-primary mb-3">View on MyAnimeList</a>
+    <ul id="anime-genres" class="anime-genres"></ul>
+
+    <!-- Button to switch to genre search -->
+    <button id="switch-to-genre" class="btn btn-info mt-3">Search by Genre</button>
+  </div>
+
+  <!-- Genre Search Page -->
+  <div id="genre-search-container" class="anime-container text-center" style="display: none;">
+    <h1>Search by Genre</h1>
+
+    <!-- Genre input -->
+    <div class="form-group">
+      <label for="genre-input">Enter Genre ID(s):</label>
+      <input type="text" id="genre-input" class="form-control" placeholder="e.g., 1,2,3">
+    </div>
+
+    <!-- Search button -->
+    <button id="search-genre" class="btn btn-primary">Search</button>
+
+    <!-- Display the selected random anime from the genre search -->
+    <div id="genre-result" class="mt-3"></div>
+
+    <!-- Button to switch back to random anime -->
+    <button id="switch-to-random" class="btn btn-secondary mt-3">Back to Random Anime</button>
+  </div>
+
+  <!-- Include local JS -->
+  <script src="popup.js"></script>
+
+</body>
 </html>
